@@ -1,5 +1,3 @@
-const { extendResolversFromInterfaces } = require("graphql-tools");
-
 module.exports.validateRegisterInput = (
   username,
   email,
@@ -8,7 +6,7 @@ module.exports.validateRegisterInput = (
 ) => {
   const errors = {};
   if (username.trim() === "") {
-    extendResolversFromInterfaces.username = "Username must not be empty";
+    errors.username = "Username must not be empty";
   }
   if (email.trim() === "") {
     errors.email = "Email must not be empty";
@@ -34,10 +32,10 @@ module.exports.validateRegisterInput = (
 module.exports.validateLoginInput = (username, password) => {
   const errors = {};
   if (username.trim() === "") {
-    extendResolversFromInterfaces.username = "Username must not be empty";
+    errors.username = "Username must not be empty";
   }
   if (password.trim() === "") {
-    extendResolversFromInterfaces.username = "Password must not be empty";
+    errors.password = "Password must not be empty";
   }
 
   return {
